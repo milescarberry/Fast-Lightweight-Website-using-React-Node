@@ -44,16 +44,39 @@ const [values,setValues] = usestate({
 
 const {name,email,message,phone,uploadedFiles,buttonText,uploadPhotosButtonText} = values ;
 
+
+
 const feedbackForm = () => (
 
 
+<React.Fragment>
 
+
+<form>
+
+<div className="form-group">
+  
+
+
+  
+</div>
+
+
+
+
+</form>
+
+
+</React.Fragment>
 
 
 
 
 
 ) 
+
+
+
 
 return (
 
@@ -70,7 +93,15 @@ return (
 
 } ;
 
+
+
+
 export default Feedback ;
+
+
+
+
+
 
 
 /* when you are creating an arrow function using curly braces, you will need
@@ -94,14 +125,18 @@ Small Example :
  
 }
 
-2. const funcTwo = () => {
+2. const funcTwo = () => (
+
+{
 
 
 
 
 
-
-    
 }
+
+
+
+) ;
 
 */
