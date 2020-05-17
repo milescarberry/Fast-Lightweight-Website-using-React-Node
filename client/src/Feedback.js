@@ -40,9 +40,41 @@ const [values,setValues] = useState({
 }) ;
 
 
+
 /* Destructuring State Variables */
 
 const {name,email,message,phone,uploadedFiles,buttonText,uploadPhotosButtonText} = values ;
+
+
+// Event Handler
+
+
+const handleChange = () => {
+
+
+
+console.log ("Handle Change") ;
+
+
+}
+
+
+
+// Function 
+
+
+const handleSubmit = () => {
+
+
+
+console.log ("Handle Submit") ;
+
+
+
+
+
+
+}
 
 
 
