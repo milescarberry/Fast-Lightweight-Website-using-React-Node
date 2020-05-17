@@ -13,7 +13,7 @@ const [values,setValues] = useState({
                                                  
                                         by creating an object. These state variables 
                                         
-                                        are the values. setValues is the method name.
+                                        are the values. *setValues* is the method name.
                                         
                                         */
 
@@ -134,7 +134,7 @@ Small Example :
 
 {
 
-
+// when creating an object use curly braces like this...
 
 
 
