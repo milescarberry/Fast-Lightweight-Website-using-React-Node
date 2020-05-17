@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 const Feedback = () => {          // Feedback Function
 
-const [values,setValues] = usestate({
+const [values,setValues] = useState({
 
     name: "" ,
     
@@ -52,13 +52,18 @@ const feedbackForm = () => (
 <React.Fragment>
 
 
-<form>
+<form onSubmit={handleSubmit}>                                             
 
-<div className="form-group">
+
+
+<div className="form-group">                          
   
+<label className= "text-muted">Description</label>
+
+<textarea onChange={handleChange} type="text" className="form-control" value={message} required></textarea>
 
 
-  
+
 </div>
 
 
