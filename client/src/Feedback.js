@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const Feedback = () => {          // Feedback Function
+const Feedback = () => {          // Feedback Function (Main Function)
 
     const [values, setValues] = useState({
 
