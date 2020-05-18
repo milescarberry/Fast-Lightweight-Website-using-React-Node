@@ -43,31 +43,36 @@ const Feedback = () => {          // Feedback Function
     const { name, email, message, phone, uploadedFiles, buttonText, uploadPhotosButtonText } = values;
 
 
-    // Event Handler
+    // "Change" Event Handler
 
 
-    const handleChange = () => {
+    const handleChange = name => event => {             /* One Arrow Function is returing 
+                                                           another arrow function */
 
 
 
-        console.log("Handle Change");
+        setValues({ ...values, [name]: event.target.value });
 
 
     };
 
 
 
-    // Function 
+    // "Submit" Event Handler
 
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+
+        event.preventDefault();                     //will prevent loading of the browser 
+                                                   //when hitting the "submit" button
 
 
-
-        console.log("Handle Submit");
-
+        setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
 
 
+        // send all state data to backend for email to the administrator
+
+        console.table({name,email,message,phone,uploadedFiles}) ;
 
 
 
@@ -107,7 +112,7 @@ const Feedback = () => {          // Feedback Function
 
                 <div className="form-group">
 
-                    <label className="text-muted">Your Email</label>
+                    <label className="text-muted">Email Address</label>
 
                     <input className="form-control" onChange={handleChange('email')} type="email" value={email} required />
 
@@ -117,7 +122,7 @@ const Feedback = () => {          // Feedback Function
 
                 <div className="form-group">
 
-                    <label className="text-muted">Your Phone Number</label>
+                    <label className="text-muted">Phone Number</label>
 
                     <input className="form-control" onChange={handleChange('phone')} type="number" value={phone} required />
 
@@ -125,7 +130,7 @@ const Feedback = () => {          // Feedback Function
                 </div>
 
 
-    <button className="btn btn-outline-primary btn-block">{buttonText}</button>   
+                <button className="btn btn-outline-primary btn-block">{buttonText}</button>
 
 
 
