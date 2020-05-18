@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 
 const Feedback = () => {          // Feedback Function
 
-const [values,setValues] = useState({
+    const [values, setValues] = useState({
 
-    name: "" ,
-    
-    email: "" ,                         /* 
+        name: "",
+
+        email: "",                         /* 
     
                                         creating state variables here 
                                                  
@@ -17,123 +17,153 @@ const [values,setValues] = useState({
                                         
                                         */
 
-    message: "" ,
+        message: "",
 
 
 
-    phone: "" ,
+        phone: "",
 
-    uploadedFiles: [] ,
+        uploadedFiles: [],
 
-    buttonText: "Submit" ,
+        buttonText: "Submit",
 
 
-    uploadPhotosButtonText: "Upload Files Here" ,
+        uploadPhotosButtonText: "Upload Files Here",
 
-    
-                                                 
 
 
 
 
+    });
 
-}) ;
 
 
+    /* Destructuring State Variables */
 
-/* Destructuring State Variables */
+    const { name, email, message, phone, uploadedFiles, buttonText, uploadPhotosButtonText } = values;
 
-const {name,email,message,phone,uploadedFiles,buttonText,uploadPhotosButtonText} = values ;
 
+    // Event Handler
 
-// Event Handler
 
+    const handleChange = () => {
 
-const handleChange = () => {
 
 
+        console.log("Handle Change");
 
-console.log ("Handle Change") ;
 
+    };
 
-}
 
 
+    // Function 
 
-// Function 
 
+    const handleSubmit = () => {
 
-const handleSubmit = () => {
 
 
+        console.log("Handle Submit");
 
-console.log ("Handle Submit") ;
 
 
 
 
 
+    };
 
-}
 
 
+    const feedbackForm = () => (
 
-const feedbackForm = () => (
 
+        <React.Fragment>
 
-<React.Fragment>
 
+            <form onSubmit={handleSubmit}>
 
-<form onSubmit={handleSubmit}>                                             
 
 
+                <div className="form-group">
 
-<div className="form-group">                          
-  
-<label className= "text-muted">Description</label>
+                    <label className="text-muted">Description</label>
 
-<textarea onChange={handleChange} type="text" className="form-control" value={message} required></textarea>
+                    <textarea onChange={handleChange('message')} type="text" className="form-control" value={message} required></textarea>
 
 
 
-</div>
+                </div>
 
+                <div className="form-group">
 
+                    <label className="text-muted">Your Name</label>
 
+                    <input className="form-control" onChange={handleChange('name')} type="text" value={name} required />
 
-</form>
 
+                </div>
 
-</React.Fragment>
 
+                <div className="form-group">
 
+                    <label className="text-muted">Your Email</label>
 
+                    <input className="form-control" onChange={handleChange('email')} type="email" value={email} required />
 
 
-) 
+                </div>
 
 
+                <div className="form-group">
 
+                    <label className="text-muted">Your Phone Number</label>
 
-return (
+                    <input className="form-control" onChange={handleChange('phone')} type="number" value={phone} required />
 
-<div className = "p-5">
 
-<p>Feedback App</p>
+                </div>
 
 
-</div>
+    <button className="btn btn-outline-primary btn-block">{buttonText}</button>   
 
 
-) ;
 
 
-} ;
 
+            </form>
 
 
+        </React.Fragment>
 
-export default Feedback ;
+
+
+
+
+    );
+
+
+    /* The return value for function Feedback() */
+
+
+    return (
+
+        <div className="p-5">
+
+            {feedbackForm()}
+
+        </div>
+
+
+    );
+
+
+};
+
+
+
+
+export default Feedback;
 
 
 
@@ -143,9 +173,9 @@ export default Feedback ;
 
 /* when you are creating an arrow function using curly braces, you will need
 
-to include a return segment at the end. Whereas,there is no need to include a 
+to include a return segment at the end. Whereas,there is no need to include a
 
-return segment when using parentheses in an arrow function [Eg: ()] . 
+return segment when using parentheses in an arrow function [Eg: ()] .
 
 Small Example :
 
@@ -158,9 +188,9 @@ Small Example :
 
 
   return (abcdef) ;
- 
- 
-}
+
+
+} ;
 
 2. const funcTwo = () => (
 
