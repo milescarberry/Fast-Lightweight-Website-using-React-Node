@@ -38,9 +38,22 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
 
+
+
+
+
     /* Destructuring State Variables */
 
     const { name, email, message, phone, uploadedFiles, buttonText, uploadPhotosButtonText } = values;
+
+
+
+    /* Destructuring .env (Environment) Variables */
+
+
+
+    const {REACT_APP_API, REACT_APP_API_CLOUDINARY_CLOUD_NAME, REACT_APP_API_CLOUDINARY_UPLOAD_SECRET} = process.env ;
+
 
 
     // "Change" Event Handler
@@ -51,116 +64,116 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
 
-        setValues({ ...values, [name]: event.target.value });
+    setValues({ ...values, [name]: event.target.value });
 
 
-    };
+};
 
 
 
-    // "Submit" Event Handler
+// "Submit" Event Handler
 
 
-    const handleSubmit = (event) => {
+const handleSubmit = (event) => {
 
-        event.preventDefault();                     //will prevent loading of the browser 
-                                                   //when hitting the "submit" button
+    event.preventDefault();                     //will prevent loading of the browser 
+    //when hitting the "submit" button
 
 
-        setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
+    setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
 
 
-        // send all state data to backend for email to the administrator
+    // send all state data to backend for email to the administrator
 
-        console.table({name,email,message,phone,uploadedFiles}) ;
+    console.table({ name, email, message, phone, uploadedFiles });
 
 
 
-    };
+};
 
 
 
-    const feedbackForm = () => (
+const feedbackForm = () => (
 
 
-        <React.Fragment>
+    <React.Fragment>
 
 
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
 
 
-                <div className="form-group">
+            <div className="form-group">
 
-                    <label className="text-muted">Description</label>
+                <label className="text-muted">Description</label>
 
-                    <textarea onChange={handleChange('message')} type="text" className="form-control" value={message} required></textarea>
+                <textarea onChange={handleChange('message')} type="text" className="form-control" value={message} required></textarea>
 
 
 
-                </div>
+            </div>
 
-                <div className="form-group">
+            <div className="form-group">
 
-                    <label className="text-muted">Your Name</label>
+                <label className="text-muted">Your Name</label>
 
-                    <input className="form-control" onChange={handleChange('name')} type="text" value={name} required />
+                <input className="form-control" onChange={handleChange('name')} type="text" value={name} required />
 
 
-                </div>
+            </div>
 
 
-                <div className="form-group">
+            <div className="form-group">
 
-                    <label className="text-muted">Email Address</label>
+                <label className="text-muted">Email Address</label>
 
-                    <input className="form-control" onChange={handleChange('email')} type="email" value={email} required />
+                <input className="form-control" onChange={handleChange('email')} type="email" value={email} required />
 
 
-                </div>
+            </div>
 
 
-                <div className="form-group">
+            <div className="form-group">
 
-                    <label className="text-muted">Phone Number</label>
+                <label className="text-muted">Phone Number</label>
 
-                    <input className="form-control" onChange={handleChange('phone')} type="number" value={phone} required />
+                <input className="form-control" onChange={handleChange('phone')} type="number" value={phone} required />
 
 
-                </div>
+            </div>
 
 
-                <button className="btn btn-outline-primary btn-block">{buttonText}</button>
+            <button className="btn btn-outline-primary btn-block">{buttonText}</button>
 
 
 
 
 
-            </form>
+        </form>
 
 
-        </React.Fragment>
+    </React.Fragment>
 
 
 
 
 
-    );
+);
 
 
-    /* The return value for function Feedback() */
+/* The return value for function Feedback() */
 
 
-    return (
+return (
 
-        <div className="p-5">
+    <div className="p-5">
 
-            {feedbackForm()}
+        {feedbackForm()}
 
-        </div>
+    </div>
 
 
-    );
+);
 
 
 };
