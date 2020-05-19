@@ -52,7 +52,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
 
-    const {REACT_APP_API, REACT_APP_API_CLOUDINARY_CLOUD_NAME, REACT_APP_API_CLOUDINARY_UPLOAD_SECRET} = process.env ;
+    const { REACT_APP_API, REACT_APP_API_CLOUDINARY_CLOUD_NAME, REACT_APP_API_CLOUDINARY_UPLOAD_SECRET } = process.env;
 
 
 
@@ -64,116 +64,130 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
 
-    setValues({ ...values, [name]: event.target.value });
+        setValues({ ...values, [name]: event.target.value });
 
 
-};
-
-
-
-// "Submit" Event Handler
-
-
-const handleSubmit = (event) => {
-
-    event.preventDefault();                     //will prevent loading of the browser 
-    //when hitting the "submit" button
-
-
-    setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
-
-
-    // send all state data to backend for email to the administrator
-
-    console.table({ name, email, message, phone, uploadedFiles });
+    };
 
 
 
-};
+    // "Submit" Event Handler
+
+
+    const handleSubmit = (event) => {
+
+        event.preventDefault();                     //will prevent loading of the browser 
+        //when hitting the "submit" button
+
+
+        setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
+
+
+        // send all state data to backend for email to the administrator
+
+        console.table({ name, email, message, phone, uploadedFiles });
 
 
 
-const feedbackForm = () => (
-
-
-    <React.Fragment>
-
-
-        <form onSubmit={handleSubmit}>
+    };
 
 
 
-            <div className="form-group">
+    const uploadWidget = () => {
+        cloudinary.openUploadWidget({ cloud_name: REACT_APP_API_CLOUDINARY_CLOUD_NAME, upload_preset: REACT_APP_API_CLOUDINARY_UPLOAD_SECRET, tags: ['ebooks'] },
+            function (error, result) {
+                console.log(result);
+            });
+    }
 
-                <label className="text-muted">Description</label>
 
-                <textarea onChange={handleChange('message')} type="text" className="form-control" value={message} required></textarea>
-
+    const feedbackForm = () => (
 
 
-            </div>
+        <React.Fragment>
 
-            <div className="form-group">
+            <div className="form-group pt-5">
 
-                <label className="text-muted">Your Name</label>
-
-                <input className="form-control" onChange={handleChange('name')} type="text" value={name} required />
-
+                <button onClick={() => uploadWidget()} className="btn btn-outline-secondary btn-block p-5">{uploadPhotosButtonText}</button>
 
             </div>
 
 
-            <div className="form-group">
-
-                <label className="text-muted">Email Address</label>
-
-                <input className="form-control" onChange={handleChange('email')} type="email" value={email} required />
-
-
-            </div>
-
-
-            <div className="form-group">
-
-                <label className="text-muted">Phone Number</label>
-
-                <input className="form-control" onChange={handleChange('phone')} type="number" value={phone} required />
-
-
-            </div>
-
-
-            <button className="btn btn-outline-primary btn-block">{buttonText}</button>
+            <form onSubmit={handleSubmit}>
 
 
 
+                <div className="form-group">
 
+                    <label className="text-muted">Description</label>
 
-        </form>
-
-
-    </React.Fragment>
-
-
+                    <textarea onChange={handleChange('message')} type="text" className="form-control" value={message} required></textarea>
 
 
 
-);
+                </div>
+
+                <div className="form-group">
+
+                    <label className="text-muted">Your Name</label>
+
+                    <input className="form-control" onChange={handleChange('name')} type="text" value={name} required />
 
 
-/* The return value for function Feedback() */
+                </div>
 
 
-return (
+                <div className="form-group">
 
-    <div className="p-5">
+                    <label className="text-muted">Email Address</label>
 
-        {feedbackForm()}
-
-    </div>
+                    <input className="form-control" onChange={handleChange('email')} type="email" value={email} required />
 
 
-);
+                </div>
+
+
+                <div className="form-group">
+
+                    <label className="text-muted">Phone Number</label>
+
+                    <input className="form-control" onChange={handleChange('phone')} type="number" value={phone} required />
+
+
+                </div>
+
+
+                <button className="btn btn-outline-primary btn-block">{buttonText}</button>
+
+
+
+
+
+            </form>
+
+
+        </React.Fragment>
+
+
+
+
+
+    );
+
+
+    /* The return value for function Feedback() */
+
+
+    return (
+
+        <div className="p-5">
+
+            {feedbackForm()}
+
+        </div>
+
+
+    );
 
 
 };
