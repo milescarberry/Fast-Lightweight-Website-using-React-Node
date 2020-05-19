@@ -94,9 +94,12 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
     const uploadWidget = () => {
-        cloudinary.openUploadWidget({ cloud_name: REACT_APP_API_CLOUDINARY_CLOUD_NAME, upload_preset: REACT_APP_API_CLOUDINARY_UPLOAD_SECRET, tags: ['ebooks'] },
-            function (error, result) {
-                console.log(result);
+        window.cloudinary.openUploadWidget({ cloud_name: REACT_APP_API_CLOUDINARY_CLOUD_NAME, upload_preset: REACT_APP_API_CLOUDINARY_UPLOAD_SECRET, tags: ['ebooks'] },
+            function (error, result) {                 // the "result" variable is an array which stores the images
+                //console.log(result);
+
+                setValues({ ...values, uploadedFiles: result, uploadPhotosButtonText: `${result ? result.length : 0} Photos Uploaded` });   // using template string here
+
             });
     }
 
