@@ -2,8 +2,14 @@ const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-require('dotenv').config()     // to access environment variables
+require('dotenv').config()     // to access environment variables  (process.env)
 
+
+// import routes
+
+
+const feedbackRoutes = require('./routes/feedback.js') ;   // this is like a 'package'. 
+                                                             // Like the above packages.
 
 //app
 
@@ -26,16 +32,18 @@ app.use(cors());
 
 // routes
 
-app.get('/api',(req,res)=>{            // Creating An Endpoint
+
+app.use('/api',feedbackRoutes) ;         // modularizing the code
+
+/* Any request made to the above endpoint will be passed on to feedbackRoutes package. */
 
 
-res.json({                            // Calling the json method
-
-data: 'You Have Hit The API!'         // created an object here to store the responses
-
-}) ;
+//port
 
 
+const port = process.env.PORT || 8000 ;   // assigning port to server side package
+
+app.listen(port,()=>{console.log(`The server is running on port: ${port}`)}) ;  // using callback function & template string here
 
 
-}) ;
+

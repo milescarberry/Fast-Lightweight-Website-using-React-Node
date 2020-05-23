@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import axios from 'axios';
+
 
 const Feedback = () => {          // Feedback Function (Main Function)
 
@@ -85,8 +87,33 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
         // send all state data to backend for email to the administrator
 
-        console.table({ name, email, message, phone, uploadedFiles });
+        //console.table({ name, email, message, phone, uploadedFiles });
 
+        axios({
+            method: 'POST',
+
+            url: `${REACT_APP_API}/feedback`,
+
+            data: { name, email, message, phone, uploadedFiles }
+
+
+        })
+
+
+            // Get the response from the back-end
+
+            .then(response => {
+
+                console.log("feedback submit response", response);
+
+
+            })
+
+            .catch(error => {                     // catch any error with feedback submission
+
+                console.log('feedback submit error', error.response);
+
+            });
 
 
     };
