@@ -10,7 +10,7 @@ const App = () => {
 return (
 
 <BrowserRouter>
-<Route path="/feedback" exec component={Feedback}/>
+<Route path="/feedback" exact component={Feedback}/>
 </BrowserRouter>
 
 
