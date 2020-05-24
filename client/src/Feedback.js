@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.min.css';
+
+
+
 
 const Feedback = () => {          // Feedback Function (Main Function)
 
@@ -66,10 +72,102 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
 
-        setValues({ ...values, [name]: event.target.value });
+        setValues({ ...values, [name]: event.target.value });      // [name] :- This is dynamically changing
 
 
     };
+
+
+
+    // Change "Event" Handler (Exclusively For Phone)
+
+    // const handlePhone = phone => event => {             /* One Arrow Function is returing 
+    //                                                       another arrow function */
+
+    //     let regexPhone = /^\(?\d{3}\)?[-.]?\d{3}[-.]?\d{4}$/;
+
+
+
+    //     setValues({ ...values, phone: event.target.value });      // [name] :- This is dynamically changing
+
+
+    //     if (regexPhone.test(phone)) {
+
+    //         toast.success('Valid Phone Number.');
+
+    //     }
+
+    //     else {
+
+    //         toast.error('Enter Correct Phone Number.');
+
+    //     }
+
+    // };
+
+
+    // Change "Event" Handler (Exclusively For Email)
+
+
+
+    // const handleEmail = email => event => {             /* One Arrow Function is returing 
+    //                                                        another arrow function */
+
+    //     let regexEmail = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+
+
+
+    //     setValues({ ...values, email: event.target.value });      // [name] :- This is dynamically changing
+
+    //     if (regexEmail.test(email)) {
+
+    //         toast.success('Valid Email Id.');
+
+    //     }
+
+
+
+    //     else {
+
+    //         toast.error('Enter Correct Email Id.');
+
+    //     }
+
+    // };
+
+
+
+    // Change "Event" Handler (Exclusively For Message)
+
+
+
+
+    // const handleMessage = message => event => {             /* One Arrow Function is returing 
+    //                                                            another arrow function */
+
+
+
+
+
+    //     setValues({ ...values, message: event.target.value });      // [name] :- This is dynamically changing
+
+    //     if (message.length >= 10) {
+
+    //         toast.success('✔');
+
+    //     }
+
+    //     else {
+
+    //         toast.error('Message Length Should Be At Least 10 Characters!');
+
+    //     }
+
+    // };
+
+
+
+
 
 
 
@@ -78,6 +176,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
     const handleSubmit = (event) => {
 
+
+
         event.preventDefault();                     //will prevent loading of the browser 
         //when hitting the "submit" button
 
@@ -85,7 +185,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
         setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
 
 
-        // send all state data to backend for email to the administrator
+        // send all state data to back-end for email to the administrator
 
         //console.table({ name, email, message, phone, uploadedFiles });
 
@@ -104,14 +204,29 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
             .then(response => {
 
-                console.log("feedback submit response", response);
+                //console.log("feedback submit response", response);
+
+                if (response.data.success) {
+                    toast.success('Thank You For Your Valuable Feedback!');
+
+                }
+
+                // Now, emptying state variables after success response
+
+
+                setValues({ ...values, name: '', email: '', message: '', phone: '', buttonText: "Submitted", uploadedFiles: [], uploadPhotosButtonText: "Uploaded" });
 
 
             })
 
             .catch(error => {                     // catch any error with feedback submission
 
-                console.log('feedback submit error', error.response);
+                //console.log('feedback submit error', error.response);
+
+                if (error.response.data.error) {
+
+                    toast.error('Failed To Send Feedback! Please Try Again.');
+                }
 
             });
 
@@ -210,8 +325,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
     return (
 
-        <div className="p-5">
-
+        <div>
+            <ToastContainer />
             {feedbackForm()}
 
         </div>
