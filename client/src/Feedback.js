@@ -301,6 +301,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
                 </div>
 
+                <br />
+
 
                 <button className="btn btn-outline-primary btn-block">{buttonText}</button>
 
@@ -325,8 +327,16 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
     return (
 
-        <div>
+        <div className="p-4">
+
             <ToastContainer />
+
+            <div className="container text-center">
+
+                <h1 className="p-5">Feedback Page</h1>
+
+            </div>
+
             {feedbackForm()}
 
         </div>
