@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 
+import Layout from './layout.js';
+
 
 
 
@@ -179,7 +181,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
         event.preventDefault();                     //will prevent loading of the browser 
-        //when hitting the "submit" button
+                                                   //when hitting the "submit" button
 
 
         setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
@@ -190,6 +192,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
         //console.table({ name, email, message, phone, uploadedFiles });
 
         axios({
+
             method: 'POST',
 
             url: `${REACT_APP_API}/feedback`,
@@ -251,7 +254,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
         <React.Fragment>
 
-            <div className="form-group pt-5">
+            <div className="form-group">
 
                 <button onClick={() => uploadWidget()} className="btn btn-outline-secondary btn-block p-5">{uploadPhotosButtonText}</button>
 
@@ -303,12 +306,11 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
                 <br />
 
-
                 <button className="btn btn-outline-primary btn-block">{buttonText}</button>
 
-
-
-
+                <br />
+                <br />
+                <br />
 
             </form>
 
@@ -327,7 +329,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
     return (
 
-        <div className="p-4">
+        <Layout>
 
             <ToastContainer />
 
@@ -337,9 +339,13 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
             </div>
 
-            {feedbackForm()}
+            <div className="container col-md-8 offset-md-2">
 
-        </div>
+                {feedbackForm()}
+
+            </div>
+
+        </Layout>
 
 
     );
