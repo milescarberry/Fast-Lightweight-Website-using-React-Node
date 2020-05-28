@@ -1,6 +1,7 @@
 
 const sgMail = require('@sendgrid/mail');   // importing @sendgrid/mail package
 
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);  // passing the api key to sgMail package using setApiKey() method
 
 
@@ -67,8 +68,8 @@ ${uploadedFiles.map((element) => { return (`<img src="${element.secure_url}" alt
         })
 
         .catch(err => {             // catch any error while sending the email
-            
-            console.log(err);            
+
+            console.log(err);
 
             return (res.json({
 

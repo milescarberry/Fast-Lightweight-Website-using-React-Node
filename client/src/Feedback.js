@@ -180,8 +180,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
 
-        event.preventDefault();                     //will prevent loading of the browser 
-                                                   //when hitting the "submit" button
+        event.preventDefault();                     /*will prevent loading of the browser 
+                                                      when hitting the "submit" button*/
 
 
         setValues({ ...values, buttonText: '...sending' });     // Change button text to '... sending'
