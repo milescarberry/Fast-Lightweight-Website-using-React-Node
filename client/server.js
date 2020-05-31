@@ -1,15 +1,15 @@
 //import packages
 
-const express = require('express');   // import express package
+const express = require('express');              // import express package
 
 const compression = require('compression');    // import compression package
 
-const path = require('path');   // import path package
+const path = require('path');                 // import path package
 
 
 // app creation
 
-const app = express();
+const app = express();            // call the express() method
 
 
 
