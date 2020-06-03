@@ -27,6 +27,13 @@ const Feedback = () => {          // Feedback Function (Main Function)
                                         
                                         */
 
+
+
+        subject: "",
+
+
+
+
         message: "",
 
 
@@ -54,7 +61,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
     /* Destructuring State Variables */
 
-    const { name, email, message, phone, uploadedFiles, buttonText, uploadPhotosButtonText } = values;
+    const { name, email, subject, message, phone, uploadedFiles, buttonText, uploadPhotosButtonText } = values;
 
 
 
@@ -207,9 +214,12 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
             .then(response => {
 
+
                 //console.log("feedback submit response", response);
 
+
                 if (response.data.success) {
+
                     toast.success('Thank You For Your Valuable Feedback!');
 
                 }
@@ -217,18 +227,23 @@ const Feedback = () => {          // Feedback Function (Main Function)
                 // Now, emptying state variables after success response
 
 
-                setValues({ ...values, name: '', email: '', message: '', phone: '', buttonText: "Submitted", uploadedFiles: [], uploadPhotosButtonText: "Uploaded" });
+                setValues({ ...values, name: '', email: '', subject: '', message: '', phone: '', buttonText: "Submitted", uploadedFiles: [], uploadPhotosButtonText: "Uploaded" });
 
 
             })
 
             .catch(error => {                     // catch any error with feedback submission
 
+
                 //console.log('feedback submit error', error.response);
+
 
                 if (error.response.data.error) {
 
+
                     toast.error('Failed To Send Feedback! Please Try Again.');
+
+
                 }
 
             });
@@ -239,7 +254,10 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
     const uploadWidget = () => {
+
         window.cloudinary.openUploadWidget({ cloud_name: REACT_APP_API_CLOUDINARY_CLOUD_NAME, upload_preset: REACT_APP_API_CLOUDINARY_UPLOAD_SECRET, tags: ['ebooks'] },
+
+
             function (error, result) {                 // the "result" variable is an array which stores the images
 
 
@@ -253,7 +271,7 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
 
-    
+
     const feedbackForm = () => (
 
 
@@ -267,6 +285,17 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
             <form onSubmit={handleSubmit}>
+
+
+                <div className="form-group">
+
+                    <label className="text-muted">Subject</label>
+
+                    <input className="form-control" onChange={handleChange('subject')} type="text" value={subject} required />
+
+
+                </div>
+
 
 
 
