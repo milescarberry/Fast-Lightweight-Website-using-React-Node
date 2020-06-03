@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import Layout from './layout.js';
 
-import { Helmet } from 'react-helmet';
-
 import axios from 'axios';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,8 +14,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 const Track = () => {                   // Main Function Track()
 
 
-    const [values, setValues] = useState({          // Object. Values are the state variables.
-        // setValues is the method
+    const [values, setValues] = useState({          /* Created An Object. Values are the state variables. */
+                                                    /* setValues is the method */
 
 
         trackingNumber: "",
@@ -212,11 +210,16 @@ const Track = () => {                   // Main Function Track()
                 draggable
                 pauseOnHover />
 
-            <div className="container text-center">
 
-                <h1 className="p-5">Order Tracking Page</h1>
+            
 
-            </div>
+                <div className="container text-center">
+
+                    <h1 className="p-5">Order Tracking Page</h1>
+
+                </div>
+
+            
 
             <div className="container col-md-8 offset-md-2">
 

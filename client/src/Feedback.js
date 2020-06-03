@@ -11,6 +11,8 @@ import Layout from './layout.js';
 
 
 
+
+
 const Feedback = () => {          // Feedback Function (Main Function)
 
     const [values, setValues] = useState({
@@ -283,6 +285,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
             </div>
 
+            <br />
+
 
             <form onSubmit={handleSubmit}>
 
@@ -295,6 +299,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
                 </div>
+
+                <br />
 
 
 
@@ -309,6 +315,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
                 </div>
 
+                <br />
+
                 <div className="form-group">
 
                     <label className="text-muted">Your Name</label>
@@ -317,6 +325,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
                 </div>
+
+                <br />
 
 
                 <div className="form-group">
@@ -327,6 +337,8 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
 
                 </div>
+
+                <br />
 
 
                 <div className="form-group">
@@ -365,13 +377,21 @@ const Feedback = () => {          // Feedback Function (Main Function)
 
         <Layout>
 
+
             <ToastContainer />
 
-            <div className="container text-center">
 
-                <h1 className="p-5">Feedback Page</h1>
+           
 
-            </div>
+                <div className="container text-center">
+
+                    <h1 className="p-5">Feedback Page</h1>
+
+                </div>
+
+
+            
+
 
             <div className="container col-md-8 offset-md-2">
 
